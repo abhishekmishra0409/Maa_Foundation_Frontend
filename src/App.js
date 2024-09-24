@@ -25,6 +25,7 @@ function App() {
 
   return (
     <div className='bg-secondary-light font-lato flex flex-col min-h-screen'>
+      {/* <h1>Hello</h1> */}
       {!isLoginOrSignup && <header className='sticky top-0 z-20'>
         <Header />
       </header>}
