@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import validator from "validator";
+import { toast } from "react-toastify";
 import axiosInstance from "../../axios/axios";
 
 const VolunteerElement = () => {
-
   const [volunteerData, setVolunteerData] = useState({
     name: "",
     email: "",
@@ -13,11 +13,12 @@ const VolunteerElement = () => {
     reason: "",
     agreed: false,
   });
+  const [flag, setFlag] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     if (name === "phoneNumber") {
-      const formattedValue = value.replace(/\D/g, '').slice(0, 10);
+      const formattedValue = value.replace(/\D/g, "").slice(0, 10);
       setVolunteerData((prevData) => ({
         ...prevData,
         [name]: formattedValue,
@@ -30,33 +31,25 @@ const VolunteerElement = () => {
     }
   };
 
-  const clear = ()=>{
-    setVolunteerData({
-      name: "",
-      email: "",
-      phoneNumber: "",
-      dob: "",
-      address: "",
-      reason: "",
-      agreed: false,
-    });
-  }
-
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("submit clicked")
-    // ToDo: Process Volunteer data
-    const res =  await axiosInstance.post('/create/volunteer',volunteerData);
-    console.log(res);
-    console.log(volunteerData);
-    clear();
-    if (volunteerData.email.trim() !== "" && validator.isEmail(volunteerData.email)) console.log("Volunteer Data:", volunteerData);
-    else {
-      //ToDo: display toast here for invalid email
+
+    setFlag(true);
+
+    if (!validator.isEmail(volunteerData.email)) {
+      toast.error("Please enter a valid email address");
+      setFlag(false);
+      return;
+    }
+    try {
+      await axiosInstance.post("/create/volunteer", volunteerData);
+      setFlag(false);
+      toast.success("Volunteer data submitted successfully!");
+    } catch (err) {
+      toast.error("email already taken");
+      setFlag(false);
     }
   };
-
-  const isFormValid = volunteerData.name && volunteerData.email && validator.isEmail(volunteerData.email) && volunteerData.dob && volunteerData.address && volunteerData.reason && volunteerData.agreed;
 
   return (
     <div className="">
@@ -76,55 +69,67 @@ const VolunteerElement = () => {
         }}
       >
         <div className="flex items-center sm:h-full justify-center sm:justify-end sm:mr-[5%] lg:mr-20">
-          <form className="mt-2 space-y-3 xl:space-y-6 sm:mt-10 w-[80%] sm:w-full sm:max-w-96 lg:max-w-md xl:max-w-lg"
-            onSubmit={handleSubmit}>
-            <input autoFocus
+          <form
+            className="mt-2 space-y-3 xl:space-y-6 sm:mt-10 w-[80%] sm:w-full sm:max-w-96 lg:max-w-md xl:max-w-lg"
+            onSubmit={handleSubmit}
+          >
+            <input
               className="input-field-primary"
               placeholder="Your Name"
               name="name"
               value={volunteerData.name}
               onChange={handleChange}
+              required
             />
-            <input autoFocus
+            <input
               className="input-field-primary"
               placeholder="Your email"
               name="email"
               value={volunteerData.email}
               onChange={handleChange}
+              required
             />
             <div className="flex items-center gap-1">
               <span className="input-field-primary text-sm w-fit">+91</span>
-              <input autoFocus
+              <input
                 className="input-field-primary"
                 placeholder="Your Number (optional)"
                 name="phoneNumber"
-                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                 type="tel"
                 value={volunteerData.phoneNumber}
                 onChange={handleChange}
                 maxLength={10}
+                pattern="[0-9]{10}"
               />
             </div>
             <div className="flex items-center gap-1">
-              <span className="input-field-primary text-sm min-w-[100px] lg:min-w-[120px] w-fit">Date of Birth:</span>
-              <input autoFocus
+              <span className="input-field-primary text-sm min-w-[100px] lg:min-w-[120px] w-fit">
+                Date of Birth:
+              </span>
+              <input
                 className="input-field-primary max-h-[2.38rem] lg:max-h-[2.88rem] min-w-[120px]"
                 type="date"
                 placeholder="DOB"
                 name="dob"
                 value={volunteerData.dob}
                 onChange={handleChange}
-                max={new Date(new Date().setFullYear(new Date().getFullYear() - 16)).toISOString().split("T")[0]}     // ! to make sure user is minimum 16 years of age
+                max={
+                  new Date(
+                    new Date().setFullYear(new Date().getFullYear() - 16)
+                  )
+                    .toISOString()
+                    .split("T")[0]
+                } // Ensures user is minimum 16 years old
+                required
               />
             </div>
-
-
-            <input autoFocus
+            <input
               className="input-field-primary"
               placeholder="Your Address"
               name="address"
               value={volunteerData.address}
               onChange={handleChange}
+              required
             />
             <textarea
               className="input-field-primary w-full h-44 mb-5 text-sm resize-none rounded-md p-3"
@@ -133,28 +138,30 @@ const VolunteerElement = () => {
               name="reason"
               value={volunteerData.reason}
               onChange={handleChange}
+              required
             />
 
             <div className="flex items-center gap-2">
-              <input autoFocus
+              <input
                 id="link-checkbox"
                 type="checkbox"
-                value=""
                 name="agreed"
                 className="custom-checkbox"
                 checked={volunteerData.agreed}
                 onChange={handleChange}
+                required
               />
               <label
                 htmlFor="link-checkbox"
                 className="text-bold font-medium !text-black"
-              ><span className="custom-checkbox-visual w-6 h-6 inline-block mr-2 rounded border-2 border-black flex-shrink-0"></span>
+              >
+                <span className="custom-checkbox-visual w-6 h-6 inline-block mr-2 rounded border-2 border-black flex-shrink-0"></span>
                 <span>Agree to the terms and conditions.</span>
               </label>
             </div>
             <div className="flex items-center">
-              <button className="btn-primary mx-auto" disabled={!isFormValid}>
-                Submit
+              <button type="submit" className="btn-primary mx-auto">
+                {flag ? "Submitting..." : "Submit"}
               </button>
             </div>
           </form>
