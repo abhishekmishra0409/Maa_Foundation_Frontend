@@ -25,7 +25,7 @@ const Home = () => {
             <NavLink to="/contact">Contact Us</NavLink>
           </button>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center mt-7"> {/* Moved down by 1 row */}
           {/* Second div content with image */}
           <img
             src="assets/map.png"
@@ -36,40 +36,42 @@ const Home = () => {
       </div>
 
       {/* Objective Element */}
-      <div id="objective">
+      <div id="objective" className="mt-[-40px]"> {/* Adjusted margin to move up */}
         <h1 className="heading font-semibold text-center text-2xl md:text-3xl lg:text-4xl">
           <span>Our </span>
           <span className="main-heading">Objective</span>
         </h1>
 
         <div className="flex flex-col items-center mt-2 lg:mt-6 mx-4 lg:mx-20">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-20"> {/* Responsive grid layout */}
-            <div className="p-2"> {/* Card container */}
-              <Card
-                imgSrc={"assets/womenEmpowerment.png"}
-                cardTitle={"Women Empowerment"}
-                cardDescription={
-                  "We focus on providing equal opportunities for women in the work field. We also conduct skill development programmes for women."
-                }
-              />
-            </div>
-            <div className="p-2"> {/* Card container */}
-              <Card
-                imgSrc={"assets/childCare.png"}
-                cardTitle={"Mother & Child Care"}
-                cardDescription={
-                  "Empowering mothers and nurturing children for a healthier, brighter future. Together, we thrive."
-                }
-              />
-            </div>
-            <div className="p-2"> {/* Card container */}
-              <Card
-                imgSrc={"assets/medical.png"}
-                cardTitle={"Free Medical Camp"}
-                cardDescription={
-                  "Providing free medical check-ups and essential healthcare services to underserved communities."
-                }
-              />
+          <div className="flex justify-center w-full"> {/* Centering the grid container */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-20"> {/* Responsive grid layout */}
+              <div className="p-2"> {/* Card container */}
+                <Card
+                  imgSrc={"assets/womenEmpowerment.png"}
+                  cardTitle={"Women Empowerment"}
+                  cardDescription={
+                    "We focus on providing equal opportunities for women in the work field. We also conduct skill development programmes for women."
+                  }
+                />
+              </div>
+              <div className="p-2"> {/* Card container */}
+                <Card
+                  imgSrc={"assets/childCare.png"}
+                  cardTitle={"Mother & Child Care"}
+                  cardDescription={
+                    "Empowering mothers and nurturing children for a healthier, brighter future. Together, we thrive."
+                  }
+                />
+              </div>
+              <div className="p-2"> {/* Card container */}
+                <Card
+                  imgSrc={"assets/medical.png"}
+                  cardTitle={"Free Medical Camp"}
+                  cardDescription={
+                    "Providing free medical check-ups and essential healthcare services to underserved communities."
+                  }
+                />
+              </div>
             </div>
           </div>
         </div>
