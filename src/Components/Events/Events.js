@@ -1,63 +1,53 @@
-// This page is dedicated to events that are shown on full page
-
-// necessary imports
-import React, { useContext } from "react";
+import React from "react";
+import { events } from "../Utils/Constant";
 import EventCard from "./EventCard";
 import { NavLink } from "react-router-dom";
-import { EventContext } from "../../context/eventContext";
 
 const Events = () => {
-
-  const {events,loading} = useContext(EventContext);
-
   return (
-    // main div
-    <div className="flex flex-col gap-20 xl:gap-52 justify-center items-center mx-20 2xl:mx-36">
-      <div className="grid grid-cols-1 md:grid-cols-2 mt-6 2xl:gap-8 -mr-8">
-
+    <div className="flex flex-col gap-16 md:gap-20 xl:gap-32 justify-center items-center px-4 sm:px-8 md:px-16 lg:px-24 2xl:px-36">
+      {/* First section with heading and image */}
+      <div className="grid grid-cols-1 md:grid-cols-2 mt-6 2xl:gap-8 -mr-0 lg:-mr-8">
         {/* First div content */}
-        <div className=" flex flex-col justify-center items-center md:items-start gap-10">
-          <h1 className="heading leading-snug font-semibold 2xl:pr-40">
-            <span className="">Transformative Programs for a </span>
+        <div className="flex flex-col justify-center items-center md:items-start gap-6 md:gap-8 xl:gap-10">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl leading-snug font-semibold 2xl:pr-20">
+            <span>Transformative Programs for a </span>
             <span className="main-heading">Brighter Future</span>
           </h1>
-          <p className="text-[#4d4d4d] text-sm sm:text-base md:text-lg lg:text-xl pr-20 2xl:pr-80 -mt-5">
-            Empowering Women Celebrating Strength and Independence - Explore
-            Our Transformative Programs Driving Women's Rights, Education, and
+          <p className="text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl pr-8 sm:pr-16 lg:pr-32 2xl:pr-80 -mt-2">
+            Empowering Women Celebrating Strength and Independence - Explore Our
+            Transformative Programs Driving Women's Rights, Education, and
             Economic Opportunities for a Brighter Future.
           </p>
-          <button className="btn-primary text-sm sm:text-base md:text-lg lg:text-xl">
-            <NavLink to="/contact" className="" >Contact Us</NavLink>
+          <button className="btn-primary text-sm sm:text-base md:text-lg lg:text-xl px-6 py-2">
+            <NavLink to="/contact">Contact Us</NavLink>
           </button>
         </div>
 
         {/* Second div content with image */}
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center mt-8 md:mt-0">
           <img
             alt="map"
             src="assets/eventMap.png"
-            className="w-full"
+            className="w-full h-auto max-w-xs md:max-w-md lg:max-w-lg xl:max-w-xl hidden md:block"
           />
         </div>
       </div>
 
-      {/* event list */}
-      {loading?<div className="flex justify-center items-center h-screen">
-      <h1 className="text-center mt-[20px] text-2xl " >Loading...</h1>
-    </div>:
-      <div className="mb-32 flex flex-col gap-36">
+      {/* Event list */}
+      <div className="mb-32 flex flex-col gap-16 md:gap-24 lg:gap-36">
         {events.map((data, index) => (
           <EventCard
             key={index}
-            image={data.imageUrl}
+            image={data.image}
             title={data.title}
             subtitle={data.subtitle}
             path={data.path}
-            id={data._id}
+            id={data.id}
             index={index}
-          ></EventCard>
+          />
         ))}
-      </div>}
+      </div>
     </div>
   );
 };
