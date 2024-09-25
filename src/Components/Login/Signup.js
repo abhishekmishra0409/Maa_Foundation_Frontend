@@ -1,9 +1,29 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from "axios";
+import { toast, Bounce } from "react-toastify";
 
 function Signup() {
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        gender: 'male',
+        phoneNumber: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+    });
     const [isTermsAgreed, setIsTermsAgreed] = useState(false);
     const [isUpdatesChecked, setIsUpdatesChecked] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
 
     const handleTermsChange = (e) => {
         setIsTermsAgreed(e.target.checked);
@@ -13,14 +33,89 @@ function Signup() {
         setIsUpdatesChecked(e.target.checked);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        if (!isTermsAgreed) {
-            alert('You must agree to the terms and conditions.');
+
+        if (!formData.firstName || !formData.lastName || !formData.phoneNumber || !formData.email || !formData.password || !formData.confirmPassword) {
+            toast.error('All fields are required!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+            });
             return;
         }
-        // Handle the form submission logic here
-        alert('Form submitted');
+
+        if (!isTermsAgreed) {
+            toast.error('You must agree to the terms and conditions!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+                });
+            return;
+        }
+
+        if (formData.password !== formData.confirmPassword) {
+            toast.error('Passwords do not match!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+                });
+            return;
+        }
+
+        try{
+            setIsLoading(true);
+            // const res = await axios.post("", formData);
+            // const data = await res.json();
+            await new Promise((res, rej) => setTimeout(res, 2000)) 
+            toast.success('Signed Up Successfully', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+                });
+        }catch(err){
+            toast.error('Passwords do not match!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+                });
+        }finally{
+            setIsLoading(false)
+        }
+
+
+        // console.log("Form Data: ", { ...formData, isTermsAgreed, isUpdatesChecked });
+        // alert('Form submitted');
     };
 
     return (
@@ -54,24 +149,48 @@ function Signup() {
                         <div className="flex justify-center space-x-4">
                             <input
                                 placeholder="First Name"
+                                name="firstName"
+                                value={formData.firstName}
+                                onChange={handleInputChange}
                                 className="input-field-primary w-1/2"
+                                required
                             />
                             <input
                                 placeholder="Last Name"
+                                name="lastName"
+                                value={formData.lastName}
+                                onChange={handleInputChange}
                                 className="input-field-primary w-1/2"
+                                required
                             />
                         </div>
 
                         <div className="flex space-x-4">
                             <div className="flex items-center">
-                                <input id="bordered-radio-1" type="radio" value="male" name="gender" className="custom-radio absolute opacity-0 w-0 h-0" defaultChecked />
+                                <input
+                                    id="bordered-radio-1"
+                                    type="radio"
+                                    value="male"
+                                    name="gender"
+                                    className="custom-radio absolute opacity-0 w-0 h-0"
+                                    checked={formData.gender === 'male'}
+                                    onChange={handleInputChange}
+                                />
                                 <label htmlFor="bordered-radio-1" className="flex items-center cursor-pointer">
                                     <span className="custom-radio-visual w-6 h-6 inline-block mr-2 rounded border-2 border-black flex-shrink-0"></span>
                                     <span className="text-base">Male</span>
                                 </label>
                             </div>
                             <div className="flex items-center">
-                                <input id="bordered-radio-2" type="radio" value="female" name="gender" className="custom-radio absolute opacity-0 w-0 h-0" />
+                                <input
+                                    id="bordered-radio-2"
+                                    type="radio"
+                                    value="female"
+                                    name="gender"
+                                    className="custom-radio absolute opacity-0 w-0 h-0"
+                                    checked={formData.gender === 'female'}
+                                    onChange={handleInputChange}
+                                />
                                 <label htmlFor="bordered-radio-2" className="flex items-center cursor-pointer">
                                     <span className="custom-radio-visual w-6 h-6 inline-block mr-2 rounded border-2 border-black flex-shrink-0"></span>
                                     <span className="text-base">Female</span>
@@ -83,22 +202,38 @@ function Signup() {
                             <input
                                 placeholder="Phone Number"
                                 type='tel'
+                                name="phoneNumber"
+                                value={formData.phoneNumber}
+                                onChange={handleInputChange}
                                 className="input-field-primary"
+                                required
                             />
                             <input
                                 placeholder="Email"
                                 type='email'
+                                name="email"
+                                value={formData.email}
+                                onChange={handleInputChange}
                                 className="input-field-primary"
+                                required
                             />
                             <input
                                 placeholder="Password"
                                 type='password'
+                                name="password"
+                                value={formData.password}
+                                onChange={handleInputChange}
                                 className="input-field-primary"
+                                required
                             />
                             <input
                                 placeholder="Confirm Password"
                                 type='password'
+                                name="confirmPassword"
+                                value={formData.confirmPassword}
+                                onChange={handleInputChange}
                                 className="input-field-primary"
+                                required
                             />
                         </div>
 
@@ -135,7 +270,7 @@ function Signup() {
 
                         <div className="flex justify-center">
                             <button type="submit" className="btn-primary w-full md:w-2/3 text-lg">
-                                Sign Up
+                            {isLoading ? "Signing up..." : "Sign Up"}
                             </button>
                         </div>
                     </form>
