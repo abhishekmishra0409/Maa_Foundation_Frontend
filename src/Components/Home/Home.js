@@ -10,8 +10,8 @@ const Home = () => {
     <div className="flex flex-col gap-20 bg-secondary-light">
 
       {/* First div */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:mx-20 2xl:mx-36 mt-6 2xl:gap-8">
-        <div className=" flex flex-col justify-center items-center md:items-start gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 mx-5 lg:mx-20 2xl:mx-36 mt-6 2xl:gap-8">
+        <div className=" flex flex-col justify-center items-center md:items-start gap-8 lg:gap-10">
 
           {/* First div content */}
           <h1 className="heading leading-snug font-semibold">
@@ -22,11 +22,11 @@ const Home = () => {
             Empowering women to lead with confidence and strength. Join us in
             creating a world of equality and opportunity for all women.
           </p>
-          <button className="btn-primary text-sm sm:text-base md:text-lg lg:text-xl">
+          <button className="btn-primary text-sm sm:text-base md:text-lg lg:text-xl -mt-2 lg:-mt-0 mb-6 lg:mb-0">
             <NavLink to="/contact" className="" >Contact Us</NavLink>
           </button>
         </div>
-        <div className=" flex justify-center items-center -mr-4">
+        <div className="flex justify-center items-center lg:-mr-4">
           {/* Second div content with image */}
           <img
             alt="map"
@@ -38,14 +38,13 @@ const Home = () => {
 
       {/* Objective Element */}
       <div id="objective">
-        <h1 className="heading font-medium text-center">
+        <h1 className="heading font-medium text-center -mt-10 md:mt-1 lg:-mt-0 text-2xl md:text-3xl lg:text-4xl mb-6 lg:mb-10">
           <span className="">Our </span>
           <span className="main-heading">Objective</span>
         </h1>
 
         <div className="flex flex-wrap justify-between items-center h-auto mt-2 lg:mt-6 mx-4 lg:mx-20">
           <Card
-            className=""
             imgSrc={"assets/womenEmpowerment.png"}
             cardTitle={"Women Empowerment"}
             cardDescription={
@@ -75,9 +74,9 @@ const Home = () => {
       </div>
 
       {/* Donate Element */}
-      <div id="donate" className="mt-10">
-        <div className="flex justify-center items-center ">
-          <h1 className="heading leading-snug">
+      <div id="donate" className="-mt-[360px] lg:mt-10">
+        <div className="flex justify-center items-center mb-8 lg:mb-10 mt-0 md:mt-40 lg:mt-0">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl leading-snug">
             <span className="">Become a </span>
             <span className="main-heading">Contributor</span>
           </h1>
@@ -90,13 +89,12 @@ const Home = () => {
     url('/assets/maa.png')`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
             backgroundBlendMode: "screen",
           }}
         >
-          <div className="w-full max-w-96  md:max-w-lg lg:max-w-2xl xl:max-w-3xl mt-2 lg:mt-6 ml-16 p-4">
+          <div className="w-full md:max-w-lg lg:max-w-2xl xl:max-w-3xl lg:mt-6 px-5 md:px-10 lg:px-10 py-0 md:py-5 lg:py-6">
             <div className="w-full max-w-md lg:max-w-lg mt-6">
-              <div className="tracking-wide leading-6 text-base ">
+              <div className="tracking-wide leading-6 text-base md:text-lg">
                 <span className="font-medium text-primary-base">MAA FOUNDATION </span>
                 <span className="font-normal  ">
                   has been working in India for over 70 years, for the upliftment of marginalized women and girls through 53 programmes in 18 states and 130+ districts.

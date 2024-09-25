@@ -38,15 +38,15 @@ const Header = () => {
   ];
 
   return (
-    <nav className="relative py-4 flex justify-between items-center bg-secondary-light w-full px-20 pb-5">
+    <nav className="relative py-4 flex justify-between items-center bg-secondary-light w-full px-3 md:px-10 lg:px-20 pb-5">
       <Link className="text-3xl font-bold leading-none" to="/" onClick={() => handleNavigation("/")}>
-        <img alt="maa-logo" className="h-14" src="/assets/maa-logo.png" />
+        <img alt="maa-logo" className="h-9 md:h-12 lg:h-14" src="/assets/maa-logo.png" />
       </Link>
 
       {/* Mobile menu button */}
       <div className="lg:hidden">
         <button onClick={toggleMenu} className="text-gray-700 hover:text-gray-900 focus:outline-none focus:text-gray-900">
-          <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="h-6 md:h-8 md:w-8 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
@@ -58,28 +58,30 @@ const Header = () => {
           <li key={url}>
             <button
               onClick={() => handleNavigation(url)}
-              className={`nav-link font-normal ${isActive(url) ? "text-primary-base underline !font-medium" : "text-black-500"}`}
+              className={`nav-link font-normal text-base md:text-lg px-0 md:px-7 lg:px-0 lg:text-2xl ${isActive(url) ? "text-primary-base underline !font-medium" : "text-black-500"}`}
             >
               {title}
             </button>
           </li>
         ))}
-        <li className="mt-4 lg:mt-0">
-          <button
-            onClick={() => handleNavigation("/signup")}
-            className="block lg:inline-block py-2 px-6 border border-primary-base hover:border-primary-dark bg-primary-base hover:bg-primary-dark text-white text-sm font-bold rounded-xl no-underline"
-          >
-            Sign Up
-          </button>
-        </li>
-        <li className="mt-4 lg:mt-0">
-          <button
-            onClick={() => handleNavigation("/login")}
-            className="block lg:inline-block py-2 px-6 border border-primary-base hover:bg-primary-base hover:text-white text-sm font-bold rounded-xl no-underline"
-          >
-            Log In
-          </button>
-        </li>
+        <div className="grid grid-cols-2 gap-3 lg:gap-8 px-0 md:px-6 lg:px-0">
+          <li className="mt-2 lg:mt-0">
+            <button
+              onClick={() => handleNavigation("/signup")}
+              className="block lg:inline-block py-2 px-11 md:px-32 lg:px-6 border border-primary-base hover:border-primary-dark bg-primary-base hover:bg-primary-dark text-white text-sm md:text-base lg:text-lg font-bold rounded-xl no-underline"
+            >
+              Sign Up
+            </button>
+          </li>
+          <li className="mt-2 lg:mt-0">
+            <button
+              onClick={() => handleNavigation("/login")}
+              className="block lg:inline-block py-2 px-12 md:px-36 lg:px-6 border border-primary-base hover:bg-primary-base hover:text-white text-sm md:text-base lg:text-lg font-bold rounded-xl no-underline"
+            >
+              Log In
+            </button>
+          </li>
+        </div>
       </ul>
     </nav>
   );
