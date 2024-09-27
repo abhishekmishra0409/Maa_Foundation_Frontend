@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-scroll";
 import validator from "validator";
-import axiosInstance from "../../../axios/axios";
-
+// import axiosInstance from "../../../axios/axios";
+import { ToastContainer, toast } from 'react-toastify';
+import axios from "axios";
 function Footer() {
   const [email, setEmail] = useState("");
   const [isValidEmail, setIsValidEmail] = useState(false);
@@ -22,8 +23,19 @@ function Footer() {
     try {
       if (isValidEmail) {
         console.log("Subscribing with email:", email);
-        await axiosInstance.post('/subscribe',{email});
+        // const submessage = await axiosInstance.post('/subscribe',{email});
+        // toast.success(submessage.data.message)
         // TODO : Add success toast here for successfull subscribtion 
+        const emailSend = {email : email}
+      axios.post('http://localhost:5001/api/subscribe', emailSend)
+      .then((response)=> {
+        toast.success(response?.data?.message);
+        console.log(response.data)
+      })
+      .catch( (error)=> {
+        toast.error(error?.response?.data?.message);
+        console.log(error)
+      });
         setEmail("");
         setIsValidEmail(false);
         setPlaceholder("Enter your email");
@@ -32,7 +44,7 @@ function Footer() {
         setPlaceholder("Please enter a valid email address");
       }
     } catch (error) {
-      console.log("something went wrong while subscribing")
+      toast.error("something went wrong while subscribing")
       // TODO : Add error toast here 
     }
   };
@@ -46,6 +58,7 @@ function Footer() {
 
   return (
     <>
+    <ToastContainer />
       {/* First Div */}
       <div className="flex flex-col">
         <img alt="maa" src="/assets/maa-logo.png" className="mb-4 w-44 h-20" />

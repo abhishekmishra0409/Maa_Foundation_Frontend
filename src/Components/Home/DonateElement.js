@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import validator from "validator";
-
+import { ToastContainer, toast } from 'react-toastify';
 const DonateElement = () => {
   const [donationData, setDonationData] = useState({
     name: "",
     email: "",
     donationAmount: ""
   });
-
+  const [raz_key, setRazKey] = useState(null)
   const [amountError, setAmountError] = useState(false);
-
+  useEffect(()=>{
+    axios.get('http://localhost:5001/api/getKey')
+    .then((res)=> {
+      setRazKey(res?.data?.key)
+    })
+    .then((err)=> console.log(err))
+  }, [])
+  console.log(raz_key)
   const handleButtonClick = (amount) => {
     setDonationData((prevData) => ({
       ...prevData,
@@ -18,7 +26,7 @@ const DonateElement = () => {
     }));
   };
 
-  const isFormValid = donationData.name  && donationData.donationAmount;
+  const isFormValid = donationData.name && donationData.donationAmount;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,10 +59,41 @@ const DonateElement = () => {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
     if (validator.isEmail(donationData.email)) {
       console.log("Donation Data:", donationData);
+      const order = await axios.post('http://localhost:5001/api/capturePayment', {
+        amount: donationData?.donationAmount
+      });
+
+      const { id, amount, currency } = order.data.order;
+      console.log(id, amount, currency)
+
+      const options = {
+        key: raz_key, 
+        amount: amount,
+        currency: currency,
+        name: donationData.name,
+        email: donationData.email,
+        order_id: id, 
+        handler: function (response) {
+          axios.post('http://localhost:5001/api/verification', {
+            bodyData : {razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,}
+          }).then((result) => {
+            console.log(result)
+            toast.success('Payment successful!');
+          }).catch((error) => {
+            console.log(error)
+            toast.error('Payment failed! Please try again.');
+          });
+        },
+      };
+      
+      const rzp1 = new window.Razorpay(options);
+    rzp1.open();
       // ToDo: Redirect to payment or handle the logic here
     } else {
       console.log("Invalid email:", donationData.email);
@@ -63,6 +102,7 @@ const DonateElement = () => {
 
   return (
     <div className="border border-black text-gray-900 text-normal mb-7 rounded-lg">
+      <ToastContainer />
       <form className="m-4" onSubmit={handleSubmit}>
         <input autoFocus
           type="text"
@@ -81,11 +121,11 @@ const DonateElement = () => {
           placeholder="Your Mail (Optional)"
         />
         <div className="mb-4">
-          <div className="flex mb-4 gap-8">
+          <div className="flex mb-4 gap-3 md:gap-4 lg:gap-5">
             {["1000", "1500", "2500"].map((amount) => (
               <button
                 key={amount}
-                className={`px-4 rounded-md hover:bg-gray-200 text-[#0B0B0B] border border-[#0B0B0B] font-bold relative py-1`}
+                className={`px-3 md:px-9 lg:px-12 rounded-md hover:bg-gray-200 text-[#0B0B0B] border border-[#0B0B0B] font-bold relative py-1`}
                 type="button"
                 onClick={() => handleButtonClick(amount)}
               >
@@ -99,24 +139,24 @@ const DonateElement = () => {
             ))}
           </div>
           <div className="flex gap-1 items-center">
-          <input autoFocus
-            type="text"
-            pattern="[0-9]*"
-            inputMode="numeric"
-            name="donationAmount"
-            value={donationData.donationAmount}
-            onChange={handleChange}
-            className="input-field-primary text-sm !w-1/2"
-            placeholder="Rs/- Enter Amount"
-          />
+            <input autoFocus
+              type="text"
+              pattern="[0-9]*"
+              inputMode="numeric"
+              name="donationAmount"
+              value={donationData.donationAmount}
+              onChange={handleChange}
+              className="input-field-primary text-sm !w-1/2"
+              placeholder="Rs/- Enter Amount"
+            />
             {amountError && (
               <div className="text-primary-base text-center">Please recheck amount. Are you sure?</div>
             )}
           </div>
         </div>
-        <NavLink to="/payment">
+        {/* <NavLink to="/payment"> */}
           <button className="btn-primary mx-auto" disabled={!isFormValid}>Donate</button>
-        </NavLink>
+        {/* </NavLink> */}
       </form>
       <div className="container mx-auto pt-4 px-0 border-t border-[#0B0B0B]">
         <div className="flex justify-between pb-1">

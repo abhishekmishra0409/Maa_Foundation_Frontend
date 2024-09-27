@@ -1,10 +1,40 @@
+import React, { useState } from "react";
+import { toast } from "react-toastify";
+import axiosInstance from "../../axios/axios";
 export default function Contact() {
+  const [contactInfo, setContactInfo] = useState({
+    email: "",
+    phone: "",
+    feedback: "",
+  });
+
+
+  // Function to validate email
+  
+  const [flag, setFlag] = useState(false);
+  const handleSumbit = async (e) => {
+    e.preventDefault();
+    setFlag(true);
+    try {
+      const response = await axiosInstance.post(
+        "/feedback/create",
+        contactInfo
+      );
+      console.log(response);
+      toast.success("FeedBack successfully submitted");
+      setFlag(false);
+    } catch (err) {
+      console.log(err);
+      toast.error(err);
+      setFlag(false);
+    }
+  };
+
   return (
     <div>
       <div className="mx-20 pt-4">
         {/* Header Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 mt-6 2xl:gap-8 -mr-8">
-
           {/* First div content */}
           <div className=" flex flex-col justify-center items-center md:items-start gap-10">
             <h1 className="heading leading-snug font-semibold 2xl:pr-40">
@@ -13,18 +43,14 @@ export default function Contact() {
             </h1>
             <p className="text-[#4d4d4d] text-sm sm:text-base md:text-lg lg:text-xl pr-20 2xl:pr-80 -mt-5">
               Connect with Maa Foundation for inquiries, support, or to get
-              involved. We're here to answer your questions and collaborate
-              for a better future.
+              involved. We're here to answer your questions and collaborate for
+              a better future.
             </p>
           </div>
 
           {/* Second div content with image */}
           <div className="flex justify-center items-center">
-            <img
-              alt="map"
-              src="/Contact/MapImg.jpg"
-              className="w-full"
-            />
+            <img alt="map" src="/Contact/MapImg.jpg" className="w-full" />
           </div>
         </div>
 
@@ -32,22 +58,36 @@ export default function Contact() {
         <div className="flex flex-col lg:flex-row justify-between items-center lg:mt-28 gap-3">
           <div className="flex flex-wrap w-full lg:w-[45%] text-gray-dark">
             <p className="text-lg lg:text-xl font-normal leading-9">
-              <span className="text-lg lg:text-xl text-primary-base mb-4">MAA FOUNDATION </span>
-              has been working in India for over 70 years, for the
-              upliftment of marginalised women and girls through 53
-              programmes in 18 states and 130+ districts.
+              <span className="text-lg lg:text-xl text-primary-base mb-4">
+                MAA FOUNDATION{" "}
+              </span>
+              has been working in India for over 70 years, for the upliftment of
+              marginalised women and girls through 53 programmes in 18 states
+              and 130+ districts.
             </p>
             <div className="mt-8 space-y-6 text-lg lg:text-xl">
               <div className="flex items-center gap-2">
-                <img className="size-7" src="/Contact/lets-icons_message-light.jpg" alt="Email Icon" />
+                <img
+                  className="size-7"
+                  src="/Contact/lets-icons_message-light.jpg"
+                  alt="Email Icon"
+                />
                 <p>maafoundataion@gmail.com</p>
               </div>
               <div className="flex items-center gap-2">
-                <img className="size-6" src="/Contact/solar_phone-linear.jpg" alt="Phone Icon" />
+                <img
+                  className="size-6"
+                  src="/Contact/solar_phone-linear.jpg"
+                  alt="Phone Icon"
+                />
                 <p>+91 9865327856, +91 9785694325</p>
               </div>
               <div className="flex items-center gap-2">
-                <img className="size-6" src="/Contact/basil_location-outline.jpg" alt="Location Icon" />
+                <img
+                  className="size-6"
+                  src="/Contact/basil_location-outline.jpg"
+                  alt="Location Icon"
+                />
                 <p>somewhere in Delhi</p>
               </div>
             </div>
@@ -58,28 +98,55 @@ export default function Contact() {
 
           {/* Contact Form Section */}
           <div className="w-full lg:w-[45%] flex justify-center mt-8 lg:mt-0">
-            <form className="w-full max-w-lg space-y-4">
-              <input autoFocus
+            <form onSubmit={handleSumbit} className="w-full max-w-lg space-y-4">
+              <input
+                onChange={(e) => {
+                  setContactInfo({
+                    ...contactInfo,
+                    email: e.target.value,
+                  });
+                }}
+                value={contactInfo.email}
+                autoFocus
                 type="email"
                 placeholder="Your Mail"
                 className="input-field-primary text-base lg:text-xl text-[#9B9B9B] bg-secondary-light"
               />
-              <input autoFocus
+              <input
+                onChange={(e) => {
+                  setContactInfo({
+                    ...contactInfo,
+                    phone: e.target.value,
+                  });
+                }}
+                autoFocus
                 type="tel"
                 placeholder="Phone Number (optional)"
                 className="input-field-primary text-base lg:text-xl text-[#9B9B9B] bg-secondary-light"
               />
-              <textarea autoFocus
+              <textarea
+                onChange={(e) => {
+                  setContactInfo({
+                    ...contactInfo,
+                    feedback: e.target.value,
+                  });
+                }}
+                autoFocus
                 placeholder="Provide Feedback"
                 className="input-field-primary text-base lg:text-xl text-[#9B9B9B] bg-secondary-light w-full h-44 resize-none rounded-md"
                 rows="4"
               />
-              <button type="submit" className="btn-primary lg:text-lg">Feedback</button>
+              <button
+                type="submit"
+                className="btn-primary lg:text-lg"
+                disabled={flag} // Disable the button while submitting
+              >
+                {flag ? "Submitting..." : "Feedback"}
+              </button>
             </form>
           </div>
         </div>
       </div>
-
 
       {/* Map Section */}
       <div className="my-20">
