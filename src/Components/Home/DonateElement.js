@@ -26,7 +26,7 @@ const DonateElement = () => {
     }));
   };
 
-  const isFormValid = donationData.name  && donationData.donationAmount;
+  const isFormValid = donationData.name && donationData.donationAmount;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -121,11 +121,11 @@ const DonateElement = () => {
           placeholder="Your Mail (Optional)"
         />
         <div className="mb-4">
-          <div className="flex mb-4 gap-8">
+          <div className="flex mb-4 gap-3 md:gap-4 lg:gap-5">
             {["1000", "1500", "2500"].map((amount) => (
               <button
                 key={amount}
-                className={`px-4 rounded-md hover:bg-gray-200 text-[#0B0B0B] border border-[#0B0B0B] font-bold relative py-1`}
+                className={`px-3 md:px-9 lg:px-12 rounded-md hover:bg-gray-200 text-[#0B0B0B] border border-[#0B0B0B] font-bold relative py-1`}
                 type="button"
                 onClick={() => handleButtonClick(amount)}
               >
@@ -139,16 +139,16 @@ const DonateElement = () => {
             ))}
           </div>
           <div className="flex gap-1 items-center">
-          <input autoFocus
-            type="text"
-            pattern="[0-9]*"
-            inputMode="numeric"
-            name="donationAmount"
-            value={donationData.donationAmount}
-            onChange={handleChange}
-            className="input-field-primary text-sm !w-1/2"
-            placeholder="Rs/- Enter Amount"
-          />
+            <input autoFocus
+              type="text"
+              pattern="[0-9]*"
+              inputMode="numeric"
+              name="donationAmount"
+              value={donationData.donationAmount}
+              onChange={handleChange}
+              className="input-field-primary text-sm !w-1/2"
+              placeholder="Rs/- Enter Amount"
+            />
             {amountError && (
               <div className="text-primary-base text-center">Please recheck amount. Are you sure?</div>
             )}

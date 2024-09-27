@@ -31,30 +31,38 @@ const VolunteerElement = () => {
     }
   };
 
+  const clear = () => {
+    setVolunteerData({
+      name: "",
+      email: "",
+      phoneNumber: "",
+      dob: "",
+      address: "",
+      reason: "",
+      agreed: false,
+    });
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("submit clicked")
+    // ToDo: Process Volunteer data
+    const res = await axiosInstance.post('/create/volunteer', volunteerData);
+    console.log(res);
+    console.log(volunteerData);
+    clear();
+    if (volunteerData.email.trim() !== "" && validator.isEmail(volunteerData.email)) console.log("Volunteer Data:", volunteerData);
+    else {
+      //ToDo: display toast here for invalid email
 
-    setFlag(true);
-
-    if (!validator.isEmail(volunteerData.email)) {
-      toast.error("Please enter a valid email address");
-      setFlag(false);
-      return;
-    }
-    try {
-      await axiosInstance.post("/create/volunteer", volunteerData);
-      setFlag(false);
-      toast.success("Volunteer data submitted successfully!");
-    } catch (err) {
-      toast.error("email already taken");
-      setFlag(false);
+ 
     }
   };
 
   return (
-    <div className="">
+    <div className="-mt-10 md:-mt-8 lg:-mt-0">
       <div className="flex justify-center items-center">
-        <h1 className="heading leading-snug">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl leading-snug">
           <span className="">Become a </span>
           <span className="main-heading">Volunteer</span>
         </h1>
@@ -68,6 +76,7 @@ const VolunteerElement = () => {
           backgroundPosition: "center",
         }}
       >
+
         <div className="flex items-center sm:h-full justify-center sm:justify-end sm:mr-[5%] lg:mr-20">
           <form
             className="mt-2 space-y-3 xl:space-y-6 sm:mt-10 w-[80%] sm:w-full sm:max-w-96 lg:max-w-md xl:max-w-lg"
@@ -81,8 +90,9 @@ const VolunteerElement = () => {
               onChange={handleChange}
               required
             />
-            <input
-              className="input-field-primary"
+            <input autoFocus
+              className="input-field-primary py-0 md:py-3 lg:py-3"
+
               placeholder="Your email"
               name="email"
               value={volunteerData.email}
@@ -90,9 +100,9 @@ const VolunteerElement = () => {
               required
             />
             <div className="flex items-center gap-1">
-              <span className="input-field-primary text-sm w-fit">+91</span>
-              <input
-                className="input-field-primary"
+              <span className="input-field-primary text-sm w-fit py-0 md:py-3 lg:py-3">+91</span>
+              <input autoFocus
+                className="input-field-primary py-0 md:py-3 lg:py-3"
                 placeholder="Your Number (optional)"
                 name="phoneNumber"
                 type="tel"
@@ -123,6 +133,7 @@ const VolunteerElement = () => {
                 required
               />
             </div>
+
             <input
               className="input-field-primary"
               placeholder="Your Address"
