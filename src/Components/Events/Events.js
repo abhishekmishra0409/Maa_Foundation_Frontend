@@ -9,23 +9,23 @@ const Events = () => {
       {/* First section with heading and image */}
       <div className="grid grid-cols-1 md:grid-cols-2 mt-6 2xl:gap-8 -mr-0 lg:-mr-8">
         {/* First div content */}
-        <div className="flex flex-col justify-center items-center md:items-start gap-6 md:gap-8 xl:gap-10">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl leading-snug break-words whitespace-pre-wrap font-semibold 2xl:pr-20">
-            <span>Transformative Programs for a </span>
+        <div className="flex flex-col justify-center items-center md:items-start text-center">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold 2xl:pr-20">
+            <span>Transformative Programs for a </span><br/>
             <span className="main-heading">Brighter Future</span>
           </h1>
-          <p className="text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl pr-8 sm:pr-16 lg:pr-32 2xl:pr-80 -mt-2">
+          <p className="flex items-center justify-center text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl my-4">
             Empowering Women Celebrating Strength and Independence - Explore Our
             Transformative Programs Driving Women's Rights, Education, and
             Economic Opportunities for a Brighter Future.
           </p>
-          <button className="btn-primary text-sm sm:text-base md:text-lg lg:text-xl px-6 py-2">
+          <button className="btn-primary text-sm sm:text-base md:text-lg lg:text-xl mx-auto my-4">
             <NavLink to="/contact">Contact Us</NavLink>
           </button>
         </div>
 
         {/* Second div content with image */}
-        <div className="flex justify-center items-center mt-8 md:mt-0">
+        <div className="flex justify-center items-center mt-8 md:mt-0 md:ml-5">
           <img
             alt="map"
             src="assets/eventMap.png"
