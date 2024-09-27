@@ -67,7 +67,7 @@ const VolunteerElement = () => {
         </h1>
       </div>
       <section
-        className="volunteer w-full h-[882px] bg-cover bg-center bg-no-repeat mt-2 md:mt-6 "
+        className="volunteer w-volunteer w-full  bg-cover bg-center bg-no-repeat mt-2 md:mt-6 h-[882px] bg-cover bg-center bg-no-repeat mt-2 md:mt-6 "
         style={{
           background: `linear-gradient(261.68deg, #ffffff 6.38%, #ffffff 11.65%, #ffffff 17.15%, #ffffff 20.6%, #ffffff 24.43%, #ffffff 36.62%, #ffffff 41.71%, #ffffff 45.65%, rgba(203, 203, 203, 0.1) 89.6%), url('/assets/volunteer.png')`,
           backgroundSize: "100% auto",
