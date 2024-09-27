@@ -95,19 +95,18 @@ const Home = () => {
             <span className="">Become a </span>
             <span className="main-heading">Contributor</span>
           </h1>
-        </div>
+        </div><br/>
 
         <section
-          className="w-full h-auto md:h-[790px] lg:h-[844px] flex justify-center items-center sm:block"
+          className="w-full h-auto flex justify-center items-center sm:block"
           style={{
             background: `linear-gradient(89.63deg,#ffffff 39.45%,rgba(0, 0, 0, 0.62) 70.46%), 
             url('/assets/maa.png')`,
-            backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundBlendMode: "screen",
           }}
         >
-          <div className="w-full max-w-96 md:max-w-lg lg:max-w-2xl xl:max-w-3xl mt-2 lg:mt-6 ml-4 p-4"> {/* Adjusted margins for mobile */}
+          <div className="w-full max-w-96 md:max-w-lg lg:max-w-2xl xl:max-w-3xl mt-2 lg:mt-6 ml-4 p-4">
             <div className="w-full max-w-md lg:max-w-lg mt-6">
               <div className="tracking-wide leading-6 text-base">
                 <span className="font-medium text-primary-base">MAA FOUNDATION </span>

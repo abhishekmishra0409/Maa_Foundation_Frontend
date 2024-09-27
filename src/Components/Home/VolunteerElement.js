@@ -41,27 +41,29 @@ const VolunteerElement = () => {
       reason: "",
       agreed: false,
     });
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("submit clicked")
-    // ToDo: Process Volunteer data
+
+
     const res = await axiosInstance.post('/create/volunteer', volunteerData);
     console.log(res);
     console.log(volunteerData);
     clear();
+
+    
     if (volunteerData.email.trim() !== "" && validator.isEmail(volunteerData.email)) console.log("Volunteer Data:", volunteerData);
     else {
       //ToDo: display toast here for invalid email
 
- 
     }
   };
 
   return (
     <div className="-mt-10 md:-mt-8 lg:-mt-0">
       <div className="flex justify-center items-center">
+
         <h1 className="text-2xl md:text-3xl lg:text-4xl leading-snug">
           <span className="">Become a </span>
           <span className="main-heading">Volunteer</span>
@@ -71,8 +73,8 @@ const VolunteerElement = () => {
         className="volunteer w-volunteer w-full  bg-cover bg-center bg-no-repeat mt-2 md:mt-6 h-[882px] bg-cover bg-center bg-no-repeat mt-2 md:mt-6 "
         style={{
           background: `linear-gradient(261.68deg, #ffffff 6.38%, #ffffff 11.65%, #ffffff 17.15%, #ffffff 20.6%, #ffffff 24.43%, #ffffff 36.62%, #ffffff 41.71%, #ffffff 45.65%, rgba(203, 203, 203, 0.1) 89.6%), url('/assets/volunteer.png')`,
-          backgroundSize: "100% auto",
           backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
@@ -119,10 +121,10 @@ const VolunteerElement = () => {
               <input
                 className="input-field-primary max-h-[2.38rem] lg:max-h-[2.88rem] min-w-[120px]"
                 type="date"
-                placeholder="DOB"
                 name="dob"
                 value={volunteerData.dob}
                 onChange={handleChange}
+
                 max={
                   new Date(
                     new Date().setFullYear(new Date().getFullYear() - 16)
@@ -151,7 +153,6 @@ const VolunteerElement = () => {
               onChange={handleChange}
               required
             />
-
             <div className="flex items-center gap-2">
               <input
                 id="link-checkbox"

@@ -65,7 +65,7 @@ function Footer() {
         <p className="w-80 text-[#0B0B0B]">
           Empowering communities through education, healthcare, and sustainable development, Maa Foundation is dedicated to creating lasting positive change and uplifting lives across India.
         </p>
-      </div>
+     
 
       <div>
         <ul className="space-y-2 mt-12 font-normal">
@@ -145,6 +145,7 @@ function Footer() {
             <img src="/assets/socials/x.svg" alt="Twitter" className="h-[24px] hover:h-[30px] hover:transition-all hover:duration-300 hover:ease-in-out" />
           </NavLink>
         </div>
+      </div>
       </div>
     </>
   );
