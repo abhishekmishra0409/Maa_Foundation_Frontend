@@ -3,7 +3,6 @@ import validator from "validator";
 import axiosInstance from "../../axios/axios";
 
 const VolunteerElement = () => {
-
   const [volunteerData, setVolunteerData] = useState({
     name: "",
     email: "",
@@ -30,7 +29,7 @@ const VolunteerElement = () => {
     }
   };
 
-  const clear = ()=>{
+  const clear = () => {
     setVolunteerData({
       name: "",
       email: "",
@@ -40,19 +39,21 @@ const VolunteerElement = () => {
       reason: "",
       agreed: false,
     });
-  }
+  };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("submit clicked")
-    // ToDo: Process Volunteer data
-    const res =  await axiosInstance.post('/create/volunteer',volunteerData);
+    console.log("submit clicked");
+    
+    const res = await axiosInstance.post('/create/volunteer', volunteerData);
     console.log(res);
     console.log(volunteerData);
     clear();
-    if (volunteerData.email.trim() !== "" && validator.isEmail(volunteerData.email)) console.log("Volunteer Data:", volunteerData);
-    else {
-      //ToDo: display toast here for invalid email
+    
+    if (volunteerData.email.trim() !== "" && validator.isEmail(volunteerData.email)) {
+      console.log("Volunteer Data:", volunteerData);
+    } else {
+      // ToDo: display toast here for invalid email
     }
   };
 
@@ -61,17 +62,17 @@ const VolunteerElement = () => {
   return (
     <div className="">
       <div className="flex justify-center items-center">
-        <h1 className="heading leading-snug">
+        <h1 className="heading leading-snug text-3xl">
           <span className="">Become a </span>
           <span className="main-heading">Volunteer</span>
         </h1>
       </div>
       <section
-        className="volunteer w-full h-[882px] bg-cover bg-center bg-no-repeat mt-2 md:mt-6 "
+        className="volunteer w-full h-[620px] bg-cover bg-center bg-no-repeat mt-2 md:mt-6"
         style={{
           background: `linear-gradient(261.68deg, #ffffff 6.38%, #ffffff 11.65%, #ffffff 17.15%, #ffffff 20.6%, #ffffff 24.43%, #ffffff 36.62%, #ffffff 41.71%, #ffffff 45.65%, rgba(203, 203, 203, 0.1) 89.6%), url('/assets/volunteer.png')`,
-          backgroundSize: "100% auto",
           backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
@@ -98,7 +99,6 @@ const VolunteerElement = () => {
                 className="input-field-primary"
                 placeholder="Your Number (optional)"
                 name="phoneNumber"
-                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                 type="tel"
                 value={volunteerData.phoneNumber}
                 onChange={handleChange}
@@ -110,15 +110,12 @@ const VolunteerElement = () => {
               <input autoFocus
                 className="input-field-primary max-h-[2.38rem] lg:max-h-[2.88rem] min-w-[120px]"
                 type="date"
-                placeholder="DOB"
                 name="dob"
                 value={volunteerData.dob}
                 onChange={handleChange}
-                max={new Date(new Date().setFullYear(new Date().getFullYear() - 16)).toISOString().split("T")[0]}     // ! to make sure user is minimum 16 years of age
+                max={new Date(new Date().setFullYear(new Date().getFullYear() - 16)).toISOString().split("T")[0]}
               />
             </div>
-
-
             <input autoFocus
               className="input-field-primary"
               placeholder="Your Address"
@@ -134,12 +131,10 @@ const VolunteerElement = () => {
               value={volunteerData.reason}
               onChange={handleChange}
             />
-
             <div className="flex items-center gap-2">
               <input autoFocus
                 id="link-checkbox"
                 type="checkbox"
-                value=""
                 name="agreed"
                 className="custom-checkbox"
                 checked={volunteerData.agreed}
