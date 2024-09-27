@@ -10,7 +10,7 @@ const Events = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 mt-6 2xl:gap-8 -mr-0 lg:-mr-8">
         {/* First div content */}
         <div className="flex flex-col justify-center items-center md:items-start gap-6 md:gap-8 xl:gap-10">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl leading-snug font-semibold 2xl:pr-20">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl leading-snug break-words whitespace-pre-wrap font-semibold 2xl:pr-20">
             <span>Transformative Programs for a </span>
             <span className="main-heading">Brighter Future</span>
           </h1>
