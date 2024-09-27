@@ -26,13 +26,9 @@ const Home = () => {
             <NavLink to="/contact" className="" >Contact Us</NavLink>
           </button>
         </div>
-        <div className=" flex justify-center items-center -mr-4">
+        <div className=" flex justify-center items-center ">
           {/* Second div content with image */}
-          <img
-            alt="map"
-            src="assets/map.png"
-            className="w-full"
-          />
+          <img alt="map" src="assets/map.png" className="w-full" />
         </div>
       </div>
 
@@ -94,7 +90,7 @@ const Home = () => {
             backgroundBlendMode: "screen",
           }}
         >
-          <div className="w-full max-w-96  md:max-w-lg lg:max-w-2xl xl:max-w-3xl mt-2 lg:mt-6 ml-16 p-4">
+     <div className="w-full max-w-96  md:max-w-lg lg:max-w-2xl xl:max-w-3xl mt-2 lg:mt-6  p-4">
             <div className="w-full max-w-md lg:max-w-lg mt-6">
               <div className="tracking-wide leading-6 text-base ">
                 <span className="font-medium text-primary-base">MAA FOUNDATION </span>
