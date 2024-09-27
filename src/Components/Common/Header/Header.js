@@ -38,7 +38,9 @@ const Header = () => {
   ];
 
   return (
+
     <nav className="relative py-4 flex justify-between items-center bg-secondary-light w-full px-3 md:px-10 lg:px-20 pb-5">
+
       <Link className="text-3xl font-bold leading-none" to="/" onClick={() => handleNavigation("/")}>
         <img alt="maa-logo" className="h-9 md:h-12 lg:h-14" src="/assets/maa-logo.png" />
       </Link>

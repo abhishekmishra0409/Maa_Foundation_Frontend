@@ -7,21 +7,25 @@ import { NavLink } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="flex flex-col gap-20 bg-secondary-light">
+    <div className="flex flex-col gap-20 bg-secondary-light p-4"> {/* Added padding for mobile spacing */}
 
       {/* First div */}
+
       <div className="grid grid-cols-1 md:grid-cols-2 mx-5 lg:mx-20 2xl:mx-36 mt-6 2xl:gap-8">
         <div className=" flex flex-col justify-center items-center md:items-start gap-8 lg:gap-10">
 
+
+     
           {/* First div content */}
-          <h1 className="heading leading-snug font-semibold">
-            <span className="">Leading the Way to Women's </span>
+          <h1 className="heading leading-snug font-bold text-2xl md:text-3xl lg:text-4xl text-center md:text-left">
+            <span>Leading the Way to Women's </span>
             <span className="main-heading">Empowerment</span>
           </h1>
-          <p className="text-[#4d4d4d] text-sm sm:text-base md:text-lg lg:text-xl pr-20 2xl:pr-80 -mt-5 text-justify">
+          <p className="text-gray-700 text-base md:text-lg lg:text-xl pr-0 md:pr-20 -mt-5 text-justify">
             Empowering women to lead with confidence and strength. Join us in
             creating a world of equality and opportunity for all women.
           </p>
+
           <button className="btn-primary text-sm sm:text-base md:text-lg lg:text-xl -mt-2 lg:-mt-0 mb-6 lg:mb-0">
             <NavLink to="/contact" className="" >Contact Us</NavLink>
           </button>
@@ -29,42 +33,52 @@ const Home = () => {
         <div className="flex justify-center items-center lg:-mr-4">
           {/* Second div content with image */}
           <img
-            alt="map"
             src="assets/map.png"
-            className="w-full"
+            className="w-full h-auto" // Ensure the image scales correctly
+            alt="map"
           />
         </div>
       </div>
 
       {/* Objective Element */}
-      <div id="objective">
-        <h1 className="heading font-medium text-center -mt-10 md:mt-1 lg:-mt-0 text-2xl md:text-3xl lg:text-4xl mb-6 lg:mb-10">
-          <span className="">Our </span>
+      <div id="objective" className="mt-[-40px]"> {/* Adjusted margin to move up */}
+        <h1 className="heading font-semibold text-center text-2xl md:text-3xl lg:text-4xl">
+          <span>Our </span>
           <span className="main-heading">Objective</span>
         </h1>
 
-        <div className="flex flex-wrap justify-between items-center h-auto mt-2 lg:mt-6 mx-4 lg:mx-20">
-          <Card
-            imgSrc={"assets/womenEmpowerment.png"}
-            cardTitle={"Women Empowerment"}
-            cardDescription={
-              "We focus on providing equal opportunities for women in the work field. We do also skill development programme for women."
-            }
-          />
-          <Card
-            imgSrc={"assets/childCare.png"}
-            cardTitle={"Mother & Child Care"}
-            cardDescription={
-              "Empowering mothers and nurturing children for a nice healthier, brighter future. Together, we thrive."
-            }
-          />
-          <Card
-            imgSrc={"assets/medical.png"}
-            cardTitle={"Free Medical Camp"}
-            cardDescription={
-              "Providing free medical check-ups and essential healthcare services to undeserved communities."
-            }
-          />
+        <div className="flex flex-col items-center mt-2 lg:mt-6 mx-4 lg:mx-20">
+          <div className="flex justify-center w-full"> {/* Centering the grid container */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-20"> {/* Responsive grid layout */}
+              <div className="p-2"> {/* Card container */}
+                <Card
+                  imgSrc={"assets/womenEmpowerment.png"}
+                  cardTitle={"Women Empowerment"}
+                  cardDescription={
+                    "We focus on providing equal opportunities for women in the work field. We also conduct skill development programmes for women."
+                  }
+                />
+              </div>
+              <div className="p-2"> {/* Card container */}
+                <Card
+                  imgSrc={"assets/childCare.png"}
+                  cardTitle={"Mother & Child Care"}
+                  cardDescription={
+                    "Empowering mothers and nurturing children for a healthier, brighter future. Together, we thrive."
+                  }
+                />
+              </div>
+              <div className="p-2"> {/* Card container */}
+                <Card
+                  imgSrc={"assets/medical.png"}
+                  cardTitle={"Free Medical Camp"}
+                  cardDescription={
+                    "Providing free medical check-ups and essential healthcare services to underserved communities."
+                  }
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -74,6 +88,7 @@ const Home = () => {
       </div>
 
       {/* Donate Element */}
+
       <div id="donate" className="-mt-[360px] lg:mt-10">
         <div className="flex justify-center items-center mb-8 lg:mb-10 mt-0 md:mt-40 lg:mt-0">
           <h1 className="text-2xl md:text-3xl lg:text-4xl leading-snug">
@@ -86,22 +101,22 @@ const Home = () => {
           className="w-full h-auto md:h-[790px] lg:h-[844px] flex justify-center items-center sm:block"
           style={{
             background: `linear-gradient(89.63deg,#ffffff 39.45%,rgba(0, 0, 0, 0.62) 70.46%), 
-    url('/assets/maa.png')`,
+            url('/assets/maa.png')`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundBlendMode: "screen",
           }}
         >
-          <div className="w-full md:max-w-lg lg:max-w-2xl xl:max-w-3xl lg:mt-6 px-5 md:px-10 lg:px-10 py-0 md:py-5 lg:py-6">
+          <div className="w-full max-w-96 md:max-w-lg lg:max-w-2xl xl:max-w-3xl mt-2 lg:mt-6 ml-4 p-4"> {/* Adjusted margins for mobile */}
             <div className="w-full max-w-md lg:max-w-lg mt-6">
-              <div className="tracking-wide leading-6 text-base md:text-lg">
+              <div className="tracking-wide leading-6 text-base">
                 <span className="font-medium text-primary-base">MAA FOUNDATION </span>
-                <span className="font-normal  ">
-                  has been working in India for over 70 years, for the upliftment of marginalized women and girls through 53 programmes in 18 states and 130+ districts.
+                <span className="font-normal">
+                  has been working in India for over 70 years, uplifting marginalized women and girls through 53 programmes in 18 states and 130+ districts.
                 </span>
               </div>
-              <p className="input-field-primary mt-4 text-normal font-bold text-black w-full">
-                MAA FOUNDATION PAN NUMBER : <span className="text-[#0B0B0B]">A125D4G46d</span>
+              <p className="input-field-primary mt-4 text-base font-bold text-black w-full">
+                MAA FOUNDATION PAN NUMBER: <span className="text-[#0B0B0B]">A125D4G46D</span>
               </p>
               <div className="mt-4" id="donateSection">
                 <DonateElement />
