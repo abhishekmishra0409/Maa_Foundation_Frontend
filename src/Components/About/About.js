@@ -1,10 +1,12 @@
+
+
 import React from 'react';
 import './About.css'; // Ensure this file is created
 
 const About = () => {
   return (
     <>
-      <div className="about-section" style={{ backgroundImage: url('/images/Group42.jpg') }}>
+      <div className="about-section" style={{ backgroundImage: `url('/images/Group42.jpg')` }}>
         <div className="content">
           <h1 className="title">Maa Foundation</h1>
           <p className="description">
@@ -13,7 +15,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="about-section2" style={{ backgroundImage: url('/images/page2.jpg') }}>
+      <div className="about-section2" style={{ backgroundImage: `url('/images/page2.jpg')` }}>
         <div className="content2">
           <h1 className="title">Founder & President</h1>
           <p className="description">
