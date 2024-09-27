@@ -33,7 +33,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/events" element={<Events />} />
-          <Route path="/event/:eventid" element={<><EventDetail /></>} />
+          <Route path="/event/:eventid" element={<EventDetail />} />
           <Route path="/gallery/*" element={<Gallery />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blog/:blogId" element={<BlogOpenPage />} />
@@ -44,7 +44,7 @@ function App() {
         </Routes>
       </main>
       {!isLoginOrSignup && <footer className='bg-secondary'>
-        <div className="py-10 mx-20 flex flex-col md:flex-row justify-between gap-4 text-gray-dark font-light">
+        <div className="py-10 mx-10 flex flex-col md:flex-row justify-between gap-4 text-gray-dark font-light">
           <Footer />
         </div>
       </footer>}
