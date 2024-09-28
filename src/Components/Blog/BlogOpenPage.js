@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import blogsData from "./blogsData";
-import { image } from "./blogsData";
+import blogsData from "./blogsdata";
+import { image } from "./blogsdata";
 import BlogsOpenPageCard from "./BlogsOpenPageCard";
 
 const BlogOpenPage = () => {

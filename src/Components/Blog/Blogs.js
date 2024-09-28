@@ -1,7 +1,7 @@
 import React from "react";
-import blogsData from "./blogsData";
+import blogsData from "./blogsdata";
 import BlogsCard from "./BlogsCard";
-import { image } from "./blogsData";
+import { image } from "./blogsdata";
 
 const Blogs = () => {
   return (

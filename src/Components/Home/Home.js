@@ -33,7 +33,7 @@ const Home = () => {
         <div className="flex justify-center items-center lg:-mr-4">
           {/* Second div content with image */}
           <img
-            src="assets/map.png"
+            src="/assets/map.png"
             className="w-full h-auto" // Ensure the image scales correctly
             alt="map"
           />
