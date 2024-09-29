@@ -1,38 +1,127 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from "react";
+import Card from "../Common/Card/Card";
+import DonateElement from "./DonateElement";
+import VolunteerElement from "./VolunteerElement";
 import { NavLink } from "react-router-dom";
 
-const Card = ({ imgSrc, cardTitle, cardDescription, link = "#" }) => {
+const Home = () => {
   return (
-    <div className="w-full sm:w-1/2 md:w-[32%] lg:w-96 cursor-pointer hover:scale-[1.15] hover:translate-y-6 transition-transform duration-300 py-2 lg:py-0">
-      <div>
-        <img src={imgSrc} alt="" className="w-full h-auto" />
+    <div className="flex flex-col gap-20 bg-secondary-light p-4"> {/* Added padding for mobile spacing */}
+
+      {/* First div */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:mx-20 2xl:mx-36 mt-6 2xl:gap-8">
+        <div className="flex flex-col justify-center items-center md:items-start gap-10">
+          {/* First div content */}
+          <h1 className="heading leading-snug font-bold text-2xl md:text-3xl lg:text-4xl text-center md:text-left">
+            <span>Leading the Way to Women's </span>
+            <span className="main-heading">Empowerment</span>
+          </h1>
+          <p className="text-gray-700 text-base md:text-lg lg:text-xl pr-0 md:pr-20 -mt-5 text-justify">
+            Empowering women to lead with confidence and strength. Join us in
+            creating a world of equality and opportunity for all women.
+          </p>
+          <button className="btn-primary text-base md:text-lg lg:text-xl">
+            <NavLink to="/contact">Contact Us</NavLink>
+          </button>
+        </div>
+        <div className="flex justify-center items-center mt-7"> {/* Moved down by 1 row */}
+          {/* Second div content with image */}
+          <img
+            src="assets/map.png"
+            className="w-full h-auto" // Ensure the image scales correctly
+            alt="map"
+          />
+        </div>
       </div>
 
-      <div className="flex flex-col justify-between h-40 gap-1">
-        <div>
-          {/* !font-['Open_Sans'] */}
-          <h2 className="font-semibold mt-2 leading-9 text-xl text-[#0A0A0A]" >{cardTitle}</h2>
-          <p className="text-lg text-gray-dark line-clamp-3">{cardDescription}</p>
+      {/* Objective Element */}
+      <div id="objective" className="mt-[-40px]"> {/* Adjusted margin to move up */}
+        <h1 className="heading font-semibold text-center text-2xl md:text-3xl lg:text-4xl">
+          <span>Our </span>
+          <span className="main-heading">Objective</span>
+        </h1>
+
+        <div className="flex flex-col items-center mt-2 lg:mt-6 mx-4 lg:mx-20">
+          <div className="flex justify-center w-full"> {/* Centering the grid container */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-20"> {/* Responsive grid layout */}
+              <div className="p-2"> {/* Card container */}
+                <Card
+                  imgSrc={"assets/womenEmpowerment.png"}
+                  cardTitle={"Women Empowerment"}
+                  cardDescription={
+                    "We focus on providing equal opportunities for women in the work field. We also conduct skill development programmes for women."
+                  }
+                />
+              </div>
+              <div className="p-2"> {/* Card container */}
+                <Card
+                  imgSrc={"assets/childCare.png"}
+                  cardTitle={"Mother & Child Care"}
+                  cardDescription={
+                    "Empowering mothers and nurturing children for a healthier, brighter future. Together, we thrive."
+                  }
+                />
+              </div>
+              <div className="p-2"> {/* Card container */}
+                <Card
+                  imgSrc={"assets/medical.png"}
+                  cardTitle={"Free Medical Camp"}
+                  cardDescription={
+                    "Providing free medical check-ups and essential healthcare services to underserved communities."
+                  }
+                />
+              </div>
+            </div>
+          </div>
         </div>
-        <NavLink to={link} className="flex items-center text-primary-base transition duration-300 hover:text-primary-dark">
-          <span className="font-medium">Learn more</span>
-          <svg
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="size-6 ml-1"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-            />
-          </svg>
-        </NavLink>
+      </div>
+
+      {/* Volunteer Element */}
+      <div id="volunteer">
+        <VolunteerElement />
+      </div>
+
+      {/* Donate Element */}
+      <div id="donate" className="mt-10">
+        <div className="flex justify-center items-center">
+          <h1 className="heading leading-snug text-2xl md:text-3xl lg:text-4xl text-center">
+            <span>Become a </span>
+            <span className="main-heading">Contributor</span>
+          </h1>
+        </div>
+
+        <section
+          className="w-full h-auto md:h-[790px] lg:h-[844px] flex justify-center items-center sm:block"
+          style={{
+            background: `linear-gradient(89.63deg,#ffffff 39.45%,rgba(0, 0, 0, 0.62) 70.46%), 
+            url('/assets/maa.png')`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundBlendMode: "screen",
+          }}
+        >
+          <div className="w-full max-w-96 md:max-w-lg lg:max-w-2xl xl:max-w-3xl mt-2 lg:mt-6 ml-4 p-4"> {/* Adjusted margins for mobile */}
+            <div className="w-full max-w-md lg:max-w-lg mt-6">
+              <div className="tracking-wide leading-6 text-base">
+                <span className="font-medium text-primary-base">MAA FOUNDATION </span>
+                <span className="font-normal">
+                  has been working in India for over 70 years, uplifting marginalized women and girls through 53 programmes in 18 states and 130+ districts.
+                </span>
+              </div>
+              <p className="input-field-primary mt-4 text-base font-bold text-black w-full">
+                MAA FOUNDATION PAN NUMBER: <span className="text-[#0B0B0B]">A125D4G46D</span>
+              </p>
+              <div className="mt-4" id="donateSection">
+                <DonateElement />
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
 };
 
-export default Card;
+export default Home;
