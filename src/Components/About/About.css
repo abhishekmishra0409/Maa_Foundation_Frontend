@@ -1,0 +1,90 @@
+/* About.css */
+
+body {
+    font-family: 'Roboto', sans-serif; /* Update font globally */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .about-section {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 90vh; /* Full viewport height */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 40px;
+    color: white;
+    transition: background 0.5s ease;
+    filter: brightness(0.8);
+  }
+  .about-section2 {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 90vh; /* Full viewport height */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 40px;
+    color: white;
+    transition: background 0.5s ease;
+    filter: brightness(0.8);
+  }
+  
+  .about-section:hover {
+    filter: brightness(0.8); /* Darken on hover */
+  }
+  
+  .content {
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    padding: 30px;
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Shadow effect */
+    max-width: 800px; /* Maximum width */
+    text-align: center; /* Centered text */
+    transition: transform 0.3s; /* Animation */
+  }
+  .content2 {
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    padding: 30px;
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Shadow effect */
+    max-width: 950px; /* Maximum width */
+    text-align: center; /* Centered text */
+    transition: transform 0.3s; /* Animation */
+  }
+  
+  .content:hover {
+    transform: scale(1.05); /* Scale up on hover */
+  }
+  .content2:hover {
+    transform: scale(1.05); /* Scale up on hover */
+  }
+  
+  .title {
+    font-size: 2.5rem; /* Responsive title size */
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .description {
+    font-size: 1.2rem; /* Responsive paragraph size */
+    line-height: 1.6; /* Improved line height */
+  }
+  
+  .highlight {
+    color: #f39c12; /* Highlight color */
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 2rem; /* Smaller title on mobile */
+    }
+  
+    .description {
+      font-size: 1rem; /* Smaller description on mobile */
+    }
+  }
