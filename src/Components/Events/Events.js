@@ -9,8 +9,8 @@ const Events = () => {
       {/* First section with heading and image */}
       <div className="grid grid-cols-1 md:grid-cols-2 mt-6 2xl:gap-8 -mr-0 lg:-mr-8">
         {/* First div content */}
-        <div className="flex flex-col justify-center items-center md:items-start text-center">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold 2xl:pr-20">
+        <div className="flex flex-col justify-center items-center md:items-start ">
+          <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-semibold 2xl:pr-20">
             <span>Transformative Programs for a </span><br/>
             <span className="main-heading">Brighter Future</span>
           </h1>
