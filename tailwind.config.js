@@ -23,7 +23,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      sans: ['sans-serif']
+      sans: ['Open Sans','sans-serif']
     },
   },
   plugins: [
