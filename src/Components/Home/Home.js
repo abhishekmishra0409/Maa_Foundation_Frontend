@@ -30,9 +30,7 @@ const Home = () => {
             <NavLink to="/contact" className="" >Contact Us</NavLink>
           </button>
         </div>
-
         <div className="flex justify-center items-center lg:-mr-4">
-
           {/* Second div content with image */}
           <img
             src="/assets/map.png"
@@ -51,9 +49,7 @@ const Home = () => {
 
         <div className="flex flex-col items-center mt-2 lg:mt-6 mx-4 lg:mx-20">
           <div className="flex justify-center w-full"> {/* Centering the grid container */}
-
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-20"> {/* Responsive grid layout */}
-
               <div className="p-2"> {/* Card container */}
                 <Card
                   imgSrc={"assets/womenEmpowerment.png"}
