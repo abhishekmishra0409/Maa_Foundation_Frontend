@@ -1,12 +1,9 @@
-import React, { useContext } from "react";
-// import blogsData from "./blogsData";
+import React from "react";
+import blogsData from "./blogsdata";
 import BlogsCard from "./BlogsCard";
 import { image } from "./blogsdata";
-import { BlogContext } from "../../context/blogContext";
 
 const Blogs = () => {
-
-  const {blogs} = useContext(BlogContext);  
   return (
     <div className="">
       <div className="relative">
@@ -19,24 +16,24 @@ const Blogs = () => {
 
         {/* Absolute Positioned Content */}
         <div className="absolute inset-0 flex flex-col justify-center p-4 sm:pl-10 lg:pl-[10%] lg:py-[8%]">
-          <p className="font-bold text-4xl lg:text-5xl text-black mb-2 sm:mb-4 lg:pb-10">
+          <p className="font-bold text-3xl sm:text-4xl lg:text-5xl text-black mb-2 sm:mb-4 lg:pb-10">
             Blogs
           </p>
-          <p className="font-semibold text-xl lg:text-3xl text-primary-base mb-1 sm:mb-2 lg:mb-4">
+          <p className="font-semibold text-lg sm:text-xl lg:text-3xl text-primary-base mb-1 sm:mb-2 lg:mb-4">
             Voice of Empowerment
           </p>
-          <p className="text-base lg:text-2xl text-black leading-normal mb-1 sm:mb-2 lg:mb-4">
+          <p className="text-sm sm:text-base lg:text-2xl text-black leading-normal mb-1 sm:mb-2 lg:mb-4">
             Amplifying Women's Strength and Influence
           </p>
         </div>
-
       </div>
 
-      <div className=" border pt-5 md:pt-10 lg:pt-20">
-        <div className="mx-20 h-auto flex flex-wrap justify-center gap-8">
-          {blogs.map((item) => {
+      <div className="border pt-5 md:pt-10 lg:pt-20">
+        <div className="mx-4 sm:mx-8 md:mx-20 flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8">
+          {blogsData.map((item) => {
             return (
               <BlogsCard
+                key={item.id}
                 id={item.id}
                 coverImage={item.coverImage}
                 authorImage={item.authorImage}
@@ -47,8 +44,8 @@ const Blogs = () => {
             );
           })}
         </div>
-        <div className="w-full flex justify-center my-28 items-center">
-          <button className="btn-primary ">
+        <div className="w-full flex justify-center my-14 sm:my-28 items-center">
+          <button className="btn-primary px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base">
             View more
           </button>
         </div>

@@ -10,8 +10,12 @@ const Home = () => {
     <div className="flex flex-col gap-20 bg-secondary-light p-4"> {/* Added padding for mobile spacing */}
 
       {/* First div */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:mx-20 2xl:mx-36 mt-6 2xl:gap-8">
-        <div className="flex flex-col justify-center items-center md:items-start gap-10">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 mx-5 lg:mx-20 2xl:mx-36 mt-6 2xl:gap-8">
+        <div className=" flex flex-col justify-center items-center md:items-start gap-8 lg:gap-10">
+
+
+     
           {/* First div content */}
           <h1 className="heading leading-snug font-bold text-2xl md:text-3xl lg:text-4xl text-center md:text-left">
             <span>Leading the Way to Women's </span>
@@ -21,14 +25,15 @@ const Home = () => {
             Empowering women to lead with confidence and strength. Join us in
             creating a world of equality and opportunity for all women.
           </p>
-          <button className="btn-primary text-base md:text-lg lg:text-xl">
-            <NavLink to="/contact">Contact Us</NavLink>
+
+          <button className="btn-primary text-sm sm:text-base md:text-lg lg:text-xl -mt-2 lg:-mt-0 mb-6 lg:mb-0">
+            <NavLink to="/contact" className="" >Contact Us</NavLink>
           </button>
         </div>
-        <div className="flex justify-center items-center mt-7"> {/* Moved down by 1 row */}
+        <div className="flex justify-center items-center lg:-mr-4">
           {/* Second div content with image */}
           <img
-            src="assets/map.png"
+            src="/assets/map.png"
             className="w-full h-auto" // Ensure the image scales correctly
             alt="map"
           />
@@ -83,26 +88,25 @@ const Home = () => {
       </div>
 
       {/* Donate Element */}
-      <div id="donate" className="mt-10">
-        <div className="flex justify-center items-center">
-          <h1 className="heading leading-snug text-2xl md:text-3xl lg:text-4xl text-center">
-            <span>Become a </span>
+
+      <div id="donate" className="-mt-[360px] lg:mt-10">
+        <div className="flex justify-center items-center mb-8 lg:mb-10 mt-0 md:mt-40 lg:mt-0">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl leading-snug">
+            <span className="">Become a </span>
             <span className="main-heading">Contributor</span>
           </h1>
-        </div>
+        </div><br/>
 
         <section
-          className="w-full h-auto md:h-[790px] lg:h-[844px] flex justify-center items-center sm:block"
+          className="w-full h-auto flex justify-center items-center sm:block"
           style={{
             background: `linear-gradient(89.63deg,#ffffff 39.45%,rgba(0, 0, 0, 0.62) 70.46%), 
             url('/assets/maa.png')`,
-            backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
             backgroundBlendMode: "screen",
           }}
         >
-          <div className="w-full max-w-96 md:max-w-lg lg:max-w-2xl xl:max-w-3xl mt-2 lg:mt-6 ml-4 p-4"> {/* Adjusted margins for mobile */}
+          <div className="w-full max-w-96 md:max-w-lg lg:max-w-2xl xl:max-w-3xl mt-2 lg:mt-6 ml-4 p-4">
             <div className="w-full max-w-md lg:max-w-lg mt-6">
               <div className="tracking-wide leading-6 text-base">
                 <span className="font-medium text-primary-base">MAA FOUNDATION </span>
