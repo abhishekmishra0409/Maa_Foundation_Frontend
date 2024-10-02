@@ -7,7 +7,15 @@ export default function Contact() {
     email: "",
     phone: "",
     feedback: "",
-  });
+  }); 
+
+  const clear = () => {
+    setContactInfo({
+      email:"",
+      phone:"",
+      feedback:""
+    })
+  }
 
   const [flag, setFlag] = useState(false);
 
@@ -15,10 +23,14 @@ export default function Contact() {
     e.preventDefault();
     setFlag(true);
     try {
-      const response = await axiosInstance.post("/feedback/create", contactInfo);
+      const response = await axiosInstance.post(
+        "/feedback/create",
+        contactInfo
+      );
       console.log(response);
       toast.success("Feedback successfully submitted");
       setFlag(false);
+      clear();
     } catch (err) {
       console.log(err);
       toast.error(err.message || "An error occurred");
@@ -30,9 +42,9 @@ export default function Contact() {
     <>
       <div className="px-4 sm:px-6 lg:px-16 py-8">
         {/* Header Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
           <div className="space-y-6">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold md:mt-[25%]">
               Get in Touch with{" "}
               <span className="text-[#ff2020]">Maa Foundation</span>
             </h1>
@@ -42,17 +54,17 @@ export default function Contact() {
               a better future.
             </p>
           </div>
-          <div className="w-full max-w-xl mx-auto">
+          <div className="hidden md:block w-full max-w-xl mx-auto">
             <img
               src="/Contact/MapImg.jpg"
               alt="map"
-              className="w-full h-auto object-cover rounded-lg shadow-md"
+              className="w-full h-auto object-cover rounded-lg "
             />
           </div>
         </div>
 
         {/* Contact Info and Form Section */}
-        <div className="mt-16 lg:mt-28 grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="mt-8 lg:mt-28 grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="space-y-8">
             <p className="text-base sm:text-lg font-normal leading-relaxed">
               <span className="text-lg sm:text-xl text-primary-base font-semibold block mb-2">
@@ -64,9 +76,18 @@ export default function Contact() {
             </p>
             <div className="space-y-6">
               {[
-                { icon: "/Contact/lets-icons_message-light.jpg", text: "maafoundataion@gmail.com" },
-                { icon: "/Contact/solar_phone-linear.jpg", text: "+91 9865327856, +91 9785694325" },
-                { icon: "/Contact/basil_location-outline.jpg", text: "somewhere in Delhi" },
+                {
+                  icon: "/Contact/lets-icons_message-light.jpg",
+                  text: "maafoundataion@gmail.com",
+                },
+                {
+                  icon: "/Contact/solar_phone-linear.jpg",
+                  text: "+91 9865327856, +91 9785694325",
+                },
+                {
+                  icon: "/Contact/basil_location-outline.jpg",
+                  text: "somewhere in Delhi",
+                },
               ].map((item, index) => (
                 <div key={index} className="flex items-center space-x-3">
                   <img src={item.icon} alt="" className="w-6 h-6" />
@@ -82,7 +103,9 @@ export default function Contact() {
               placeholder="Your Email"
               className="w-full p-3 border border-gray-300 rounded-md text-sm sm:text-base"
               value={contactInfo.email}
-              onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })}
+              onChange={(e) =>
+                setContactInfo({ ...contactInfo, email: e.target.value })
+              }
               required
             />
             <input
@@ -90,18 +113,22 @@ export default function Contact() {
               placeholder="Phone Number (optional)"
               className="w-full p-3 border border-gray-300 rounded-md text-sm sm:text-base"
               value={contactInfo.phone}
-              onChange={(e) => setContactInfo({ ...contactInfo, phone: e.target.value })}
+              onChange={(e) =>
+                setContactInfo({ ...contactInfo, phone: e.target.value })
+              }
             />
             <textarea
               placeholder="Provide Feedback"
               className="w-full p-3 border border-gray-300 rounded-md h-32 text-sm sm:text-base resize-none"
               value={contactInfo.feedback}
-              onChange={(e) => setContactInfo({ ...contactInfo, feedback: e.target.value })}
+              onChange={(e) =>
+                setContactInfo({ ...contactInfo, feedback: e.target.value })
+              }
               required
             ></textarea>
             <button
               type="submit"
-              className="w-full bg-primary-base text-white py-3 px-6 rounded-md font-semibold text-sm sm:text-base hover:bg-primary-dark transition duration-300"
+              className="w-full bg-primary-base text-white py-3 px-6 rounded-md font-semibold text-sm sm:text-base hover:bg-primary-dark transition duration-300 max-w-40"
               disabled={flag}
             >
               {flag ? "Submitting..." : "Send Feedback"}

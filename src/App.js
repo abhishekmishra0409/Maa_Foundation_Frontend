@@ -13,6 +13,8 @@ import EventDetail from "./Components/Events/EventDetail";
 import Signup from "./Components/Login/Signup";
 import Payment from "./Components/Home/Payment";
 import { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const location = useLocation();
@@ -26,6 +28,7 @@ function App() {
 
   return (
     <div className="bg-secondary-light font-lato flex flex-col min-h-screen">
+      <ToastContainer position="top-center" autoClose={3000} />
       {!isLoginOrSignup && (
         <header className="sticky top-0 z-20">
           <Header />
