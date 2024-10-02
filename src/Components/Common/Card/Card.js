@@ -3,19 +3,18 @@ import { NavLink } from "react-router-dom";
 
 const Card = ({ imgSrc, cardTitle, cardDescription, link = "#" }) => {
   return (
-    <div className="w-full sm:w-1/2 md:w-[32%] lg:w-96 cursor-pointer hover:scale-[1.15] hover:translate-y-6 transition-transform duration-300 py-2 lg:py-0">
+    <div className="w-full sm:w-100% md:w-100% lg:w-100% xl:w-1/5 cursor-pointer hover:scale-[1.05] hover:translate-y-1 transition-transform duration-300 py-2 shadow-lg hover:shadow-xl rounded-lg">
       <div>
-        <img src={imgSrc} alt="" className="w-full h-auto" />
+        <img src={imgSrc} alt={cardTitle} className="w-full h-auto rounded-t-lg" />
       </div>
 
-      <div className="flex flex-col justify-between h-40 gap-1">
+      <div className="flex flex-col justify-between h-48 gap-2 p-4 bg-white rounded-b-lg">
         <div>
-          {/* !font-['Open_Sans'] */}
-          <h2 className="font-semibold mt-2 leading-9 text-xl text-[#0A0A0A]" >{cardTitle}</h2>
-          <p className="text-lg text-gray-dark line-clamp-3">{cardDescription}</p>
+          <h2 className="font-semibold mt-2 leading-8 text-xl text-[#0A0A0A]">{cardTitle}</h2>
+          <p className="text-lg text-gray-700 line-clamp-3">{cardDescription}</p>
         </div>
         <NavLink to={link} className="flex items-center text-primary-base transition duration-300 hover:text-primary-dark">
-          <span className="font-medium">Learn more</span>
+          <span className="font-medium text-sm">Learn more</span>
           <svg
             fill="none"
             viewBox="0 0 24 24"
