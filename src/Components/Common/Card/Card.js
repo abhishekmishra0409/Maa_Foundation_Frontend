@@ -20,7 +20,7 @@ const Card = ({ imgSrc, cardTitle, cardDescription, link = "#" }) => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="h-5 w-5 ml-1"
+            className="size-6 ml-1"
           >
             <path
               strokeLinecap="round"
