@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-scroll";
 import validator from "validator";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import axios from "axios";
 
 function Footer() {
@@ -53,7 +53,6 @@ function Footer() {
 
   return (
       <>
-        <ToastContainer />
         <div className="flex flex-col lg:flex-row justify-between space-y-6 md:space-y-0 md:space-x-8 px-4 md:px-8 lg:px-16 py-8">
           {/* Logo and Description */}
           <div className="md:w-1/3">

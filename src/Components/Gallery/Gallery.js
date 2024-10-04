@@ -63,7 +63,7 @@ const Gallery = () => {
             <NavLink to="/contact" className="">Contact Us</NavLink>
           </button>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center ">
           <img
             alt="hero_image"
             src="/gallery/heroImage1.jpeg"
