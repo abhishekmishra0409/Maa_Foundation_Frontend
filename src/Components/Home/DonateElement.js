@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 // import { NavLink } from "react-router-dom";
 import validator from "validator";
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 const DonateElement = () => {
   const [donationData, setDonationData] = useState({
     name: "",
@@ -102,6 +102,7 @@ const DonateElement = () => {
 
   return (
     <div className="border border-black text-gray-900 text-normal mb-7 rounded-lg">
+      <ToastContainer />
       <form className="m-4" onSubmit={handleSubmit}>
         <input autoFocus
           type="text"
