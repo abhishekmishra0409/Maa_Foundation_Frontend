@@ -104,7 +104,7 @@ const DonateElement = () => {
     <div className="border border-black text-gray-900 text-normal mb-7 rounded-lg">
       <ToastContainer />
       <form className="m-4" onSubmit={handleSubmit}>
-        <input autoFocus
+        <input
           type="text"
           name="name"
           value={donationData.name}
@@ -139,7 +139,7 @@ const DonateElement = () => {
             ))}
           </div>
           <div className="flex gap-1 items-center">
-            <input autoFocus
+            <input
               type="text"
               pattern="[0-9]*"
               inputMode="numeric"

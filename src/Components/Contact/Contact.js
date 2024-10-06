@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import axiosInstance from "../../axios/axios";
+
 export default function Contact() {
   const [contactInfo, setContactInfo] = useState({
     email: "",
@@ -8,9 +9,7 @@ export default function Contact() {
     feedback: "",
   });
 
-
   // Function to validate email
-  
   const [flag, setFlag] = useState(false);
   const handleSumbit = async (e) => {
     e.preventDefault();
@@ -32,16 +31,16 @@ export default function Contact() {
 
   return (
     <div>
-      <div className="mx-20 pt-4">
+      <div className="mx-5 lg:mx-20 2xl:mx-36 pt-4">
         {/* Header Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 mt-6 2xl:gap-8 -mr-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 mt-6 2xl:gap-8">
           {/* First div content */}
-          <div className=" flex flex-col justify-center items-center md:items-start gap-10">
-            <h1 className="heading leading-snug font-semibold 2xl:pr-40">
+          <div className=" flex flex-col justify-center items-center md:items-start gap-8 lg:gap-10">
+            <h1 className="heading leading-snug font-bold text-2xl md:text-3xl lg:text-4xl text-center md:text-left">
               <span className="">Get in Touch with </span>
               <span className="main-heading">Maa Foundation</span>
             </h1>
-            <p className="text-[#4d4d4d] text-sm sm:text-base md:text-lg lg:text-xl pr-20 2xl:pr-80 -mt-5">
+            <p className="text-gray-700 text-base md:text-lg lg:text-xl pr-0 md:pr-20 -mt-5 text-justify">
               Connect with Maa Foundation for inquiries, support, or to get
               involved. We're here to answer your questions and collaborate for
               a better future.
@@ -49,13 +48,13 @@ export default function Contact() {
           </div>
 
           {/* Second div content with image */}
-          <div className="flex justify-center items-center">
+          <div className="flex hidden sm:block justify-center items-center lg:-mr-4">
             <img alt="map" src="/Contact/MapImg.jpg" className="w-full" />
           </div>
         </div>
 
         {/* Contact Info Section */}
-        <div className="flex flex-col lg:flex-row justify-between items-center lg:mt-28 gap-3">
+        <div className="flex flex-col lg:flex-row justify-between items-center mt-28 gap-3">
           <div className="flex flex-wrap w-full lg:w-[45%] text-gray-dark">
             <p className="text-lg lg:text-xl font-normal leading-9">
               <span className="text-lg lg:text-xl text-primary-base mb-4">
@@ -65,7 +64,7 @@ export default function Contact() {
               marginalised women and girls through 53 programmes in 18 states
               and 130+ districts.
             </p>
-            <div className="mt-8 space-y-6 text-lg lg:text-xl">
+            <div className="mt-8   space-y-6 text-lg lg:text-xl">
               <div className="flex items-center gap-2">
                 <img
                   className="size-7"
@@ -97,7 +96,7 @@ export default function Contact() {
           <div className="block lg:block w-px bg-gray-300 mx-4 my-8 lg:my-0"></div>
 
           {/* Contact Form Section */}
-          <div className="w-full lg:w-[45%] flex justify-center mt-8 lg:mt-0">
+          <div className="w-full lg:w-[45%] flex justify-center md:mt-5 lg:mt-0">
             <form onSubmit={handleSumbit} className="w-full max-w-lg space-y-4">
               <input
                 onChange={(e) => {
@@ -107,7 +106,6 @@ export default function Contact() {
                   });
                 }}
                 value={contactInfo.email}
-                autoFocus
                 type="email"
                 placeholder="Your Mail"
                 className="input-field-primary text-base lg:text-xl text-[#9B9B9B] bg-secondary-light"
@@ -119,7 +117,6 @@ export default function Contact() {
                     phone: e.target.value,
                   });
                 }}
-                autoFocus
                 type="tel"
                 placeholder="Phone Number (optional)"
                 className="input-field-primary text-base lg:text-xl text-[#9B9B9B] bg-secondary-light"
@@ -131,7 +128,6 @@ export default function Contact() {
                     feedback: e.target.value,
                   });
                 }}
-                autoFocus
                 placeholder="Provide Feedback"
                 className="input-field-primary text-base lg:text-xl text-[#9B9B9B] bg-secondary-light w-full h-44 resize-none rounded-md"
                 rows="4"

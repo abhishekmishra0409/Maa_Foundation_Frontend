@@ -47,19 +47,19 @@ const Gallery = () => {
   };
 
   return (
-    <div className="mx-4 md:mx-20 mb-20">
-      <div className="grid grid-cols-1 md:grid-cols-2 mt-6 gap-6 md:gap-8">
-        <div className="flex flex-col justify-center items-center md:items-start gap-5 md:gap-10">
-          <h1 className="heading leading-snug font-semibold text-2xl md:text-3xl lg:text-4xl">
-            <span className="">Empowering Women Our </span>
+    <div className="mx-4 md:mx-24 mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-2  mt-6 2xl:gap-8">
+        <div className="flex flex-col justify-center items-center md:items-start gap-8 lg:gap-10">
+          <h1 className="heading leading-snug font-bold text-2xl md:text-3xl lg:text-4xl text-center md:text-left">
+            <span className="">Empowering Women Our </span><br />
             <span className="main-heading">Mission in Action</span>
           </h1>
-          <p className="text-[#4d4d4d] text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl pr-0 md:pr-20 2xl:pr-80 -mt-2 md:-mt-5">
+          <p className="text-gray-700 text-base md:text-lg lg:text-xl pr-0 md:pr-20 -mt-5 text-justify">
             Explore our journey of empowering women through impactful
             initiatives. Witness the transformation and strength in every story
             captured in our mission-driven gallery.
           </p>
-          <button className="btn-primary text-sm md:text-base lg:text-lg">
+          <button className="btn-primary text-sm sm:text-base md:text-lg lg:text-xl -mt-2 lg:-mt-0 mb-6 lg:mb-0">
             <NavLink to="/contact" className="">Contact Us</NavLink>
           </button>
         </div>

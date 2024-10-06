@@ -45,18 +45,20 @@ const VolunteerElement = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-
-    const res = await axiosInstance.post('/create/volunteer', volunteerData);
-    console.log(res);
-    console.log(volunteerData);
-    clear();
-
-    
-    if (volunteerData.email.trim() !== "" && validator.isEmail(volunteerData.email)) console.log("Volunteer Data:", volunteerData);
-    else {
-      //ToDo: display toast here for invalid email
-
+    setFlag(true);
+    if (!validator.isEmail(volunteerData.email)) {
+      toast.error("Please enter a valid email address");
+      setFlag(false);
+      return;
+    }
+    try {
+      await axiosInstance.post("/create/volunteer", volunteerData);
+      setFlag(false);
+      toast.success("Volunteer data submitted successfully!");
+      clear();
+    } catch (err) {
+      toast.error("email already taken");
+      setFlag(false);
     }
   };
 
@@ -92,8 +94,8 @@ const VolunteerElement = () => {
               onChange={handleChange}
               required
             />
-            <input autoFocus
-              className="input-field-primary py-0 md:py-3 lg:py-3"
+            <input
+              className="input-field-primary "
 
               placeholder="Your email"
               name="email"
@@ -102,9 +104,9 @@ const VolunteerElement = () => {
               required
             />
             <div className="flex items-center gap-1">
-              <span className="input-field-primary text-sm w-fit py-0 md:py-3 lg:py-3">+91</span>
-              <input autoFocus
-                className="input-field-primary py-0 md:py-3 lg:py-3"
+              <span className="input-field-primary text-sm w-fit ">+91</span>
+              <input
+                className="input-field-primary "
                 placeholder="Your Number (optional)"
                 name="phoneNumber"
                 type="tel"
@@ -116,7 +118,7 @@ const VolunteerElement = () => {
             </div>
             <div className="flex items-center gap-1">
               <span className="input-field-primary text-sm min-w-[100px] lg:min-w-[120px] w-fit">
-                Date of Birth:
+                Date of Birth
               </span>
               <input
                 className="input-field-primary max-h-[2.38rem] lg:max-h-[2.88rem] min-w-[120px]"

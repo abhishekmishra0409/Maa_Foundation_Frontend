@@ -7,19 +7,19 @@ const Events = () => {
   return (
     <div className="flex flex-col gap-16 md:gap-20 xl:gap-32 justify-center items-center px-4 sm:px-8 md:px-16 lg:px-24 2xl:px-36">
       {/* First section with heading and image */}
-      <div className="grid grid-cols-1 md:grid-cols-2 mt-6 2xl:gap-8 -mr-0 lg:-mr-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 mt-6 2xl:gap-8">
         {/* First div content */}
-        <div className="flex flex-col justify-center items-center md:items-start ">
-          <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-semibold 2xl:pr-20">
-            <span>Transformative Programs for a </span><br/>
+        <div className="flex flex-col justify-center items-center md:items-start gap-8 lg:gap-10">
+          <h1 className="heading leading-snug font-bold text-2xl md:text-3xl lg:text-4xl text-center md:text-left">
+            <span>Transformative Programs for a </span>
             <span className="main-heading">Brighter Future</span>
           </h1>
-          <p className="flex items-center justify-center text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl my-4">
+          <p className="text-gray-700 text-base md:text-lg lg:text-xl pr-0 md:pr-20 -mt-5 text-justify">
             Empowering Women Celebrating Strength and Independence - Explore Our
             Transformative Programs Driving Women's Rights, Education, and
             Economic Opportunities for a Brighter Future.
           </p>
-          <button className="btn-primary text-sm sm:text-base md:text-lg lg:text-xl mx-auto my-4">
+          <button className="btn-primary text-sm sm:text-base md:text-lg lg:text-xl -mt-2 lg:-mt-0 mb-6 lg:mb-0">
             <NavLink to="/contact">Contact Us</NavLink>
           </button>
         </div>
