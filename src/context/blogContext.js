@@ -13,7 +13,7 @@ export const BlogContextProvider = ({ children }) => {
     try {
       const getAllblogs = async () => {
         const res = await axiosInstance.get("/blog/getAllBlogs");
-        console.log(res.data.data);
+        // console.log(res.data.data);
         setBlogs(res.data.data);
         setLoading(false);
       };

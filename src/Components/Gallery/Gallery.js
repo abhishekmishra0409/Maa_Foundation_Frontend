@@ -15,14 +15,14 @@ const Gallery = () => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`http://localhost:5001/api/gallery?page=${currentPage}&limit=${imagesPerPage}`);
+        const response = await fetch(`https://maa-foundation-backend-2-81ph.onrender.com/api/gallery?page=${currentPage}&limit=${imagesPerPage}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const jsonData = await response.json();
         setData(jsonData.data);
         setTotalPages(jsonData.totalPages);
-        console.log(jsonData);
+        // console.log(jsonData);
       } catch (error) {
         console.error('Error in fetching data:', error);
         setError(error.message);

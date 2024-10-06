@@ -19,11 +19,11 @@ export default function Contact() {
         "/feedback/create",
         contactInfo
       );
-      console.log(response);
+      // console.log(response);
       toast.success("FeedBack successfully submitted");
       setFlag(false);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       toast.error(err);
       setFlag(false);
     }

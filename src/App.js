@@ -18,7 +18,7 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    console.log('Current path:', location.pathname);
+    // console.log('Current path:', location.pathname);
   }, [location]);
 
   const isLoginOrSignup = location.pathname === '/login' || location.pathname === '/signup';

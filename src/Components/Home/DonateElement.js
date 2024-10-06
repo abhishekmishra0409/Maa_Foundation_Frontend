@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 // import { NavLink } from "react-router-dom";
 import validator from "validator";
 import { ToastContainer, toast } from 'react-toastify';
+import axiosInstance from "../../axios/axios";
+
+
 const DonateElement = () => {
   const [donationData, setDonationData] = useState({
     name: "",
@@ -12,13 +15,13 @@ const DonateElement = () => {
   const [raz_key, setRazKey] = useState(null)
   const [amountError, setAmountError] = useState(false);
   useEffect(()=>{
-    axios.get('http://localhost:5001/api/getKey')
+    axiosInstance.get('/getKey')
     .then((res)=> {
       setRazKey(res?.data?.key)
     })
     .then((err)=> console.log(err))
   }, [])
-  console.log(raz_key)
+  // console.log(raz_key)
   const handleButtonClick = (amount) => {
     setDonationData((prevData) => ({
       ...prevData,
@@ -62,7 +65,7 @@ const DonateElement = () => {
   const handleSubmit = async(event) => {
     event.preventDefault();
     if (validator.isEmail(donationData.email)) {
-      console.log("Donation Data:", donationData);
+      // console.log("Donation Data:", donationData);
       const order = await axios.post('http://localhost:5001/api/capturePayment', {
         amount: donationData?.donationAmount
       });
