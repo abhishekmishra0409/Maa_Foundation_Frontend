@@ -66,7 +66,7 @@ const DonateElement = () => {
     event.preventDefault();
     if (validator.isEmail(donationData.email)) {
       // console.log("Donation Data:", donationData);
-      const order = await axios.post('http://localhost:5001/api/capturePayment', {
+      const order = await axios.post('https://maa-foundation-backend-wref.onrender.com/api/capturePayment', {
         amount: donationData?.donationAmount
       });
 

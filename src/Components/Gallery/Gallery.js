@@ -15,7 +15,7 @@ const Gallery = () => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`https://maa-foundation-backend-2-81ph.onrender.com/api/gallery?page=${currentPage}&limit=${imagesPerPage}`);
+        const response = await fetch(`https://maa-foundation-backend-wref.onrender.com/api/gallery?page=${currentPage}&limit=${imagesPerPage}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
